@@ -35,6 +35,7 @@ public class JoystickInitializer : MonoBehaviour
                 joystick.SetMode(CustomJoystickType.Dynamic);
                 break;
             default:
+                joystick.SetMode(CustomJoystickType.Floating);
                 break;
         }
     }
