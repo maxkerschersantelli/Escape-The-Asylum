@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private GameObject rightMenu;
     [SerializeField] private GameObject title;
 
+    [SerializeField] private GameObject graphicsSettingsMenu;
+    [SerializeField] private GameObject audioSettingsMenu;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +21,8 @@ public class MainMenuController : MonoBehaviour
         rightMenu.SetActive(false);
         title.SetActive(true);
         leftMenuSub.SetActive(false);
+
+        audioSettingsMenu.SetActive(false);
     }
 
     public void SwitchToLeftMenu()
@@ -25,6 +31,11 @@ public class MainMenuController : MonoBehaviour
         title.SetActive(true);
         leftMenuSub.SetActive(false);
         leftMenu.SetActive(true);
+    }
+
+    public void ContinueButtonOnClick()
+    {
+        SceneManager.LoadScene("Test");
     }
 
     public void NewGameOnCLick()
@@ -50,5 +61,17 @@ public class MainMenuController : MonoBehaviour
     public void BackOnClick()
     {
         SwitchToLeftMenu();
+    }
+
+    public void GraphicsSettingsOnClick()
+    {
+        graphicsSettingsMenu.SetActive(true);
+        audioSettingsMenu.SetActive(false);
+    }
+
+    public void AudioSettingsOnClick()
+    {
+        graphicsSettingsMenu.SetActive(false);
+        audioSettingsMenu.SetActive(true);
     }
 }
