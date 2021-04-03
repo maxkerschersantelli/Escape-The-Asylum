@@ -9,6 +9,7 @@ public class GameMenuController : MonoBehaviour
     [SerializeField] private GameObject menu;
     [SerializeField] private GameObject audioMenu;
     [SerializeField] private GameObject graphicsMenu;
+    [SerializeField] private GameObject disableUI;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,11 @@ public class GameMenuController : MonoBehaviour
         menu.SetActive(true);
         audioMenu.SetActive(false);
         graphicsMenu.SetActive(false);
+
+        if (disableUI != null)
+        {
+            disableUI.SetActive(false);
+        }
     }
 
     public void backButtonClick()
@@ -33,6 +39,11 @@ public class GameMenuController : MonoBehaviour
         menu.SetActive(false);
         audioMenu.SetActive(false);
         graphicsMenu.SetActive(false);
+
+        if (disableUI != null)
+        {
+            disableUI.SetActive(true);
+        }
     }
 
     public void exitButtonClick()

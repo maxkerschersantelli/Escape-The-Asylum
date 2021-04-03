@@ -59,18 +59,23 @@ public class CustomJoystickBase : MonoBehaviour, IPointerDownHandler, IDragHandl
     {
         if (moveController)
         {
-            // create new axes based on axes to use
-            m_HorizontalVirtualAxis = new CrossPlatformInputManager.VirtualAxis(horizontalAxisName);
-            CrossPlatformInputManager.RegisterVirtualAxis(m_HorizontalVirtualAxis);
-            m_VerticalVirtualAxis = new CrossPlatformInputManager.VirtualAxis(verticalAxisName);
-            CrossPlatformInputManager.RegisterVirtualAxis(m_VerticalVirtualAxis);
+            if (!CrossPlatformInputManager.AxisExists(horizontalAxisName))
+            {
+                m_HorizontalVirtualAxis = new CrossPlatformInputManager.VirtualAxis(horizontalAxisName);
+                CrossPlatformInputManager.RegisterVirtualAxis(m_HorizontalVirtualAxis);
+                m_VerticalVirtualAxis = new CrossPlatformInputManager.VirtualAxis(verticalAxisName);
+                CrossPlatformInputManager.RegisterVirtualAxis(m_VerticalVirtualAxis);
+            }            
         }
         else
         {
-            m_HorizontalVirtualAxis = new CrossPlatformInputManager.VirtualAxis(horizontalAxisNameLook);
-            CrossPlatformInputManager.RegisterVirtualAxis(m_HorizontalVirtualAxis);
-            m_VerticalVirtualAxis = new CrossPlatformInputManager.VirtualAxis(verticalAxisNameLook);
-            CrossPlatformInputManager.RegisterVirtualAxis(m_VerticalVirtualAxis);
+            if (!CrossPlatformInputManager.AxisExists(horizontalAxisNameLook))
+            {
+                m_HorizontalVirtualAxis = new CrossPlatformInputManager.VirtualAxis(horizontalAxisNameLook);
+                CrossPlatformInputManager.RegisterVirtualAxis(m_HorizontalVirtualAxis);
+                m_VerticalVirtualAxis = new CrossPlatformInputManager.VirtualAxis(verticalAxisNameLook);
+                CrossPlatformInputManager.RegisterVirtualAxis(m_VerticalVirtualAxis);
+            }
         }
     }
 
@@ -187,20 +192,6 @@ public class CustomJoystickBase : MonoBehaviour, IPointerDownHandler, IDragHandl
         return Vector2.zero;
     }
 
-    void OnDisable()
-    {
-        if (CrossPlatformInputManager.AxisExists(horizontalAxisName))
-            CrossPlatformInputManager.UnRegisterVirtualAxis(horizontalAxisName);
-
-        if (CrossPlatformInputManager.AxisExists(verticalAxisName))
-            CrossPlatformInputManager.UnRegisterVirtualAxis(verticalAxisName);
-
-        if (CrossPlatformInputManager.AxisExists(horizontalAxisNameLook))
-            CrossPlatformInputManager.UnRegisterVirtualAxis(horizontalAxisNameLook);
-
-        if (CrossPlatformInputManager.AxisExists(verticalAxisNameLook))
-            CrossPlatformInputManager.UnRegisterVirtualAxis(verticalAxisNameLook);
-    }
 }
 
 public enum CustomAxisOptions { Both, Horizontal, Vertical }
