@@ -7,30 +7,35 @@ using UnityEngine.UI;
 public class MainMenuController : MonoBehaviour
 {
     [SerializeField] private GameObject leftMenu;
+    [SerializeField] private GameObject leftMenuMain;
     [SerializeField] private GameObject leftMenuSub;
+
     [SerializeField] private GameObject rightMenu;
+    [SerializeField] private GameObject rightMenuBackgroundImage;
+
     [SerializeField] private GameObject title;
 
     [SerializeField] private GameObject graphicsSettingsMenu;
     [SerializeField] private GameObject audioSettingsMenu;
+    [SerializeField] private GameObject newGameMenu;
+    [SerializeField] private GameObject loadGameMenu;
 
     // Start is called before the first frame update
     void Start()
     {
         leftMenu.SetActive(true);
-        rightMenu.SetActive(false);
-        title.SetActive(true);
+        leftMenuMain.SetActive(true);
         leftMenuSub.SetActive(false);
 
+        rightMenu.SetActive(true);
+        rightMenuBackgroundImage.SetActive(false);
+        title.SetActive(true);
+        
         audioSettingsMenu.SetActive(false);
-    }
-
-    public void SwitchToLeftMenu()
-    {
-        rightMenu.SetActive(false);
-        title.SetActive(true);
-        leftMenuSub.SetActive(false);
-        leftMenu.SetActive(true);
+        graphicsSettingsMenu.SetActive(false);
+        audioSettingsMenu.SetActive(false);
+        newGameMenu.SetActive(false);
+        loadGameMenu.SetActive(false);
     }
 
     public void ContinueButtonOnClick()
@@ -40,27 +45,52 @@ public class MainMenuController : MonoBehaviour
 
     public void NewGameOnCLick()
     {
-        SceneManager.LoadScene("Test");
+        newGameMenu.SetActive(true);
+        loadGameMenu.SetActive(false);
+        title.SetActive(false);
+        rightMenuBackgroundImage.SetActive(true);
+
+        audioSettingsMenu.SetActive(false);
+        graphicsSettingsMenu.SetActive(false);
     }
 
     public void LoadGameOnCLick()
     {
-        rightMenu.SetActive(true);
+        newGameMenu.SetActive(false);
+        loadGameMenu.SetActive(true);
         title.SetActive(false);
-        leftMenu.SetActive(false);
+        rightMenuBackgroundImage.SetActive(true);
+
+        audioSettingsMenu.SetActive(false);
+        graphicsSettingsMenu.SetActive(false);
     }
 
     public void SettingsOnClick()
     {
-        rightMenu.SetActive(true);
+        newGameMenu.SetActive(false);
+        loadGameMenu.SetActive(false);
         title.SetActive(false);
-        leftMenu.SetActive(false);
+        rightMenuBackgroundImage.SetActive(true);
+
+        audioSettingsMenu.SetActive(false);
+        graphicsSettingsMenu.SetActive(true);
+
+        leftMenuMain.SetActive(false);
         leftMenuSub.SetActive(true);
     }
 
     public void BackOnClick()
     {
-        SwitchToLeftMenu();
+        graphicsSettingsMenu.SetActive(false);
+        audioSettingsMenu.SetActive(false);
+
+        leftMenuMain.SetActive(true);
+        leftMenuSub.SetActive(false);
+
+        newGameMenu.SetActive(false);
+        loadGameMenu.SetActive(false);
+        title.SetActive(true);
+        rightMenuBackgroundImage.SetActive(false);
     }
 
     public void GraphicsSettingsOnClick()
