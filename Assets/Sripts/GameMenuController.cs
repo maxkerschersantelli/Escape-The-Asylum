@@ -8,7 +8,7 @@ public class GameMenuController : MonoBehaviour
     [SerializeField] private GameObject menuButton;
     [SerializeField] private GameObject menu;
     [SerializeField] private GameObject audioMenu;
-    [SerializeField] private GameObject graphicsMenu;
+    [SerializeField] private GameObject controlMenu;
     [SerializeField] private GameObject disableUI;
 
     // Start is called before the first frame update
@@ -17,7 +17,7 @@ public class GameMenuController : MonoBehaviour
         menuButton.SetActive(true);
         menu.SetActive(false);
         audioMenu.SetActive(false);
-        graphicsMenu.SetActive(false);
+        controlMenu.SetActive(false);
     }
 
     public void menuButtonClick()
@@ -25,11 +25,11 @@ public class GameMenuController : MonoBehaviour
         menuButton.SetActive(false);
         menu.SetActive(true);
         audioMenu.SetActive(false);
-        graphicsMenu.SetActive(false);
+        controlMenu.SetActive(false);
 
         if (disableUI != null)
         {
-            disableUI.SetActive(false);
+            disableUI.GetComponent<Canvas>().enabled = false;
         }
     }
 
@@ -38,11 +38,11 @@ public class GameMenuController : MonoBehaviour
         menuButton.SetActive(true);
         menu.SetActive(false);
         audioMenu.SetActive(false);
-        graphicsMenu.SetActive(false);
+        controlMenu.SetActive(false);
 
         if (disableUI != null)
         {
-            disableUI.SetActive(true);
+            disableUI.GetComponent<Canvas>().enabled = true;
         }
     }
 
@@ -56,7 +56,7 @@ public class GameMenuController : MonoBehaviour
         menuButton.SetActive(false);
         menu.SetActive(false);
         audioMenu.SetActive(false);
-        graphicsMenu.SetActive(true);
+        controlMenu.SetActive(true);
     }
 
     public void audioSettingsButtonClick()
@@ -64,6 +64,6 @@ public class GameMenuController : MonoBehaviour
         menuButton.SetActive(false);
         menu.SetActive(false);
         audioMenu.SetActive(true);
-        graphicsMenu.SetActive(false);
+        controlMenu.SetActive(false);
     }
 }

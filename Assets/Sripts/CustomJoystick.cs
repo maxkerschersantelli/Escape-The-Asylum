@@ -25,11 +25,38 @@ public class CustomJoystick : CustomJoystickBase
             background.gameObject.SetActive(false);
     }
 
+    public new void SetSettings()
+    {
+        base.SetSettings();
+        if (base.Left)
+        {
+            if (PlayerPrefs.GetInt("LeftStickMode", base.defaultSettings.leftStickMode) == 0)
+            {
+                SetMode(CustomJoystickType.Fixed);
+            }
+            else
+            {
+                SetMode(CustomJoystickType.Floating);
+            }
+        }
+        else
+        {
+            if (PlayerPrefs.GetInt("RightStickMode", base.defaultSettings.rightStickMode) == 0)
+            {
+                SetMode(CustomJoystickType.Fixed);
+            }
+            else
+            {
+                SetMode(CustomJoystickType.Floating);
+            }
+        }
+    }
+
     protected override void Start()
     {
         base.Start();
         fixedPosition = background.anchoredPosition;
-        SetMode(joystickType);
+        SetSettings();
     }
 
     public override void OnPointerDown(PointerEventData eventData)

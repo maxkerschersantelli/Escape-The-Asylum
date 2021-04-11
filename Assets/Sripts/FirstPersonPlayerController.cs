@@ -87,7 +87,7 @@ public class FirstPersonPlayerController : MonoBehaviour
     public InvertMouseInput mouseInputInversion = InvertMouseInput.None;
     public enum CameraInputMethod { Traditional, TraditionalWithConstraints, Retro }
     public CameraInputMethod cameraInputMethod = CameraInputMethod.Traditional;
-
+    public DefaultSettingsSO defaultSettings;
     public float verticalRotationRange = 170;
     public float mouseSensitivity = 10;
     public float fOVToMouseSensitivity = 1;
@@ -262,6 +262,7 @@ public class FirstPersonPlayerController : MonoBehaviour
         #endregion 
 
         #region Movement Settings - Awake
+        
         walkSpeedInternal = walkSpeed;
         sprintSpeedInternal = sprintSpeed;
         jumpPowerInternal = jumpPower;
@@ -345,8 +346,24 @@ public class FirstPersonPlayerController : MonoBehaviour
 
         previousPosition = fps_Rigidbody.position;
         audioSource = GetComponent<AudioSource>();
-    #endregion
-}
+        SetSettings();
+        #endregion
+    }
+    public void SetSettings()
+    {
+        walkSpeed = PlayerPrefs.GetFloat("MovementSpeed", defaultSettings.movementSpeed);
+        walkSpeedInternal = walkSpeed;
+        mouseSensitivity = PlayerPrefs.GetFloat("LookSensitivity", defaultSettings.lookSensitivity);
+        if(PlayerPrefs.GetInt("Invert", defaultSettings.invert) == 1)
+        {
+            mouseInputInversion = InvertMouseInput.Y;
+        }
+        else
+        {
+            mouseInputInversion = InvertMouseInput.None;
+        }
+        audioSource.volume = PlayerPrefs.GetFloat("SoundEffectVolume", defaultSettings.soundEffectVolume) / 10;
+    }
 
     private void Update()
     {
@@ -1057,6 +1074,7 @@ public class FirstPersonPlayerController_Editor : Editor
         GUI.enabled = t.playerCanMove;
         t.walkByDefault = EditorGUILayout.ToggleLeft(new GUIContent("Walk By Default", "Determines if the default mode of movement is 'Walk' or 'Srpint'."), t.walkByDefault);
         t.walkSpeed = EditorGUILayout.Slider(new GUIContent("Walk Speed", "Determines how fast the player walks."), t.walkSpeed, 0.1f, 10);
+        t.defaultSettings = (DefaultSettingsSO)EditorGUILayout.ObjectField(new GUIContent("DefaultAsset Settings", "Default settings SO"), t.defaultSettings, typeof(DefaultSettingsSO), false);
         t.sprintKey = (KeyCode)EditorGUILayout.EnumPopup(new GUIContent("Sprint Key", "Determines what key needs to be pressed to enter a sprint"), t.sprintKey);
         t.sprintSpeed = EditorGUILayout.Slider(new GUIContent("Sprint Speed", "Determines how fast the player sprints."), t.sprintSpeed, 0.1f, 20);
         t.canJump = EditorGUILayout.ToggleLeft(new GUIContent("Can Player Jump?", "Determines if the player is allowed to jump."), t.canJump);

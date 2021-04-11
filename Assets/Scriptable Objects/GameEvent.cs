@@ -19,8 +19,10 @@ public class GameEvent : ScriptableObject
 
     public void Raise()
     {
+        Debug.Log("Raise");
         for (int i = listeners.Count - 1; i >= 0; --i)
         {
+            Debug.Log("Raise" + i);
             listeners[i].RaiseEvent();
         }
     }

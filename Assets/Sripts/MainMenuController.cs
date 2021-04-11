@@ -15,14 +15,18 @@ public class MainMenuController : MonoBehaviour
 
     [SerializeField] private GameObject title;
 
-    [SerializeField] private GameObject graphicsSettingsMenu;
+    [SerializeField] private GameObject controlsSettingsMenu;
     [SerializeField] private GameObject audioSettingsMenu;
     [SerializeField] private GameObject newGameMenu;
     [SerializeField] private GameObject loadGameMenu;
 
+    [SerializeField] private GameObject loadingScreen;
+
     // Start is called before the first frame update
     void Start()
     {
+        loadingScreen.SetActive(false);
+
         leftMenu.SetActive(true);
         leftMenuMain.SetActive(true);
         leftMenuSub.SetActive(false);
@@ -32,7 +36,7 @@ public class MainMenuController : MonoBehaviour
         title.SetActive(true);
         
         audioSettingsMenu.SetActive(false);
-        graphicsSettingsMenu.SetActive(false);
+        controlsSettingsMenu.SetActive(false);
         audioSettingsMenu.SetActive(false);
         newGameMenu.SetActive(false);
         loadGameMenu.SetActive(false);
@@ -40,7 +44,9 @@ public class MainMenuController : MonoBehaviour
 
     public void ContinueButtonOnClick()
     {
-        SceneManager.LoadScene("Test");
+        leftMenu.SetActive(false);
+        rightMenu.SetActive(false);
+        loadingScreen.SetActive(true);
     }
 
     public void NewGameOnCLick()
@@ -51,7 +57,7 @@ public class MainMenuController : MonoBehaviour
         rightMenuBackgroundImage.SetActive(true);
 
         audioSettingsMenu.SetActive(false);
-        graphicsSettingsMenu.SetActive(false);
+        controlsSettingsMenu.SetActive(false);
     }
 
     public void LoadGameOnCLick()
@@ -62,7 +68,7 @@ public class MainMenuController : MonoBehaviour
         rightMenuBackgroundImage.SetActive(true);
 
         audioSettingsMenu.SetActive(false);
-        graphicsSettingsMenu.SetActive(false);
+        controlsSettingsMenu.SetActive(false);
     }
 
     public void SettingsOnClick()
@@ -73,7 +79,7 @@ public class MainMenuController : MonoBehaviour
         rightMenuBackgroundImage.SetActive(true);
 
         audioSettingsMenu.SetActive(false);
-        graphicsSettingsMenu.SetActive(true);
+        controlsSettingsMenu.SetActive(true);
 
         leftMenuMain.SetActive(false);
         leftMenuSub.SetActive(true);
@@ -81,7 +87,7 @@ public class MainMenuController : MonoBehaviour
 
     public void BackOnClick()
     {
-        graphicsSettingsMenu.SetActive(false);
+        controlsSettingsMenu.SetActive(false);
         audioSettingsMenu.SetActive(false);
 
         leftMenuMain.SetActive(true);
@@ -95,13 +101,13 @@ public class MainMenuController : MonoBehaviour
 
     public void GraphicsSettingsOnClick()
     {
-        graphicsSettingsMenu.SetActive(true);
+        controlsSettingsMenu.SetActive(true);
         audioSettingsMenu.SetActive(false);
     }
 
     public void AudioSettingsOnClick()
     {
-        graphicsSettingsMenu.SetActive(false);
+        controlsSettingsMenu.SetActive(false);
         audioSettingsMenu.SetActive(true);
     }
 }

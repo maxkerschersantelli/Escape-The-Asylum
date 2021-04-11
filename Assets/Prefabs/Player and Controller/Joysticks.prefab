@@ -109,6 +109,7 @@ MonoBehaviour:
   horizontalAxisNameLook: HorizontalLook
   verticalAxisNameLook: VerticalLook
   moveController: 1
+  left: 1
   handleRange: 1
   deadZone: 0
   axisOptions: 0
@@ -116,6 +117,7 @@ MonoBehaviour:
   snapY: 0
   background: {fileID: 4258709207822255333}
   handle: {fileID: 4258709207592232676}
+  defaultSettings: {fileID: 11400000, guid: 9e55839e59a224ce482fd2594486fbd9, type: 2}
   moveThreshold: 1
   joystickType: 0
 --- !u!114 &1025076825183764585
@@ -134,13 +136,13 @@ MonoBehaviour:
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4258709207552678047}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 5803518767952474590}
+        m_TargetAssemblyTypeName: CustomJoystick, Assembly-CSharp
+        m_MethodName: SetSettings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -582,6 +584,7 @@ MonoBehaviour:
   horizontalAxisNameLook: HorizontalLook
   verticalAxisNameLook: VerticalLook
   moveController: 0
+  left: 0
   handleRange: 1
   deadZone: 0
   axisOptions: 0
@@ -589,6 +592,7 @@ MonoBehaviour:
   snapY: 0
   background: {fileID: 9151393330469879813}
   handle: {fileID: 9151393328889690472}
+  defaultSettings: {fileID: 11400000, guid: 9e55839e59a224ce482fd2594486fbd9, type: 2}
   moveThreshold: 1
   joystickType: 0
 --- !u!114 &8244920651587052026
@@ -607,13 +611,13 @@ MonoBehaviour:
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9151393329332497258}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1653227857171815526}
+        m_TargetAssemblyTypeName: CustomJoystick, Assembly-CSharp
+        m_MethodName: SetSettings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

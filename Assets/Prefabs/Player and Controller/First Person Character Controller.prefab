@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 1478108811440654851}
   - component: {fileID: 1560117002976690153}
   - component: {fileID: 1415553144680748877}
+  - component: {fileID: 3347123381208514178}
+  - component: {fileID: 3094661801749268739}
   m_Layer: 0
   m_Name: First Person Character Controller
   m_TagString: Player
@@ -181,6 +183,7 @@ MonoBehaviour:
   enableCameraMovement: 1
   mouseInputInversion: 0
   cameraInputMethod: 0
+  defaultSettings: {fileID: 0}
   verticalRotationRange: 170
   mouseSensitivity: 2
   fOVToMouseSensitivity: 1
@@ -194,7 +197,7 @@ MonoBehaviour:
   targetAngles: {x: 0, y: 0, z: 0}
   playerCanMove: 1
   walkByDefault: 1
-  walkSpeed: 8
+  walkSpeed: 0.1
   sprintKey: 304
   sprintSpeed: 8
   jumpPower: 5
@@ -236,10 +239,11 @@ MonoBehaviour:
   headbobSideMovement: 1
   jumpLandIntensity: 3
   enableAudioSFX: 1
-  Volume: 5
+  Volume: 6.89
   jumpSound: {fileID: 0}
   landSound: {fileID: 0}
-  footStepSounds: []
+  footStepSounds:
+  - {fileID: 8300000, guid: a9e804a8165699a49bceb84d083a34a6, type: 3}
   fsmode: 0
   dynamicFootstep:
     materialMode: 0
@@ -265,6 +269,62 @@ MonoBehaviour:
     rockAndConcreteClipSet: []
     mudClipSet: []
     customClipSet: []
+--- !u!114 &3347123381208514178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460451695600196339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6deec7480b9144a8ea796abaa0f80abd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameEvent: {fileID: 11400000, guid: 242f00082333841d18246dd58ae8e445, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1415553144680748877}
+        m_TargetAssemblyTypeName: FirstPersonPlayerController, Assembly-CSharp
+        m_MethodName: SetSettings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3094661801749268739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460451695600196339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6deec7480b9144a8ea796abaa0f80abd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameEvent: {fileID: 11400000, guid: 68b64be32855b4181b533aed12000ca4, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1415553144680748877}
+        m_TargetAssemblyTypeName: FirstPersonPlayerController, Assembly-CSharp
+        m_MethodName: SetSettings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1461031755653750659
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,7 +522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: 59a37cc3ae4384aec94969f2647eccec, type: 2}
+  sharedProfile: {fileID: 0}
   isGlobal: 1
   blendDistance: 0
   weight: 1

@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 968ab11ac1fa8498182aae4bcbebcdf6, type: 3}
   m_Name: DefaultSettings
   m_EditorClassIdentifier: 
-  musicVolume: 0.2
-  soundEffectVolume: 0.4
-  movementSpeed: 5
-  lookSensitivity: 5
+  musicVolume: 5
+  soundEffectVolume: 5
+  movementSpeed: 7
+  lookSensitivity: 3
   leftStickMode: 1
-  leftStickAction: 1
-  leftStickDeadZone: 5
+  leftStickAction: 0
+  leftStickDeadZone: 0.1
   rightStickMode: 1
   rightStickAction: 1
-  rightStickDeadZone: 5
+  rightStickDeadZone: 0.1
   invert: 0

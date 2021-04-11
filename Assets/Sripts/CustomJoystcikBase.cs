@@ -31,6 +31,13 @@ public class CustomJoystickBase : MonoBehaviour, IPointerDownHandler, IDragHandl
         set { deadZone = Mathf.Abs(value); }
     }
 
+    [SerializeField] private bool left;
+    public bool Left
+    {
+        get { return left; }
+        set { left = value; }
+    }
+
     public AxisOptions AxisOptions { get { return AxisOptions; } set { axisOptions = value; } }
     public bool SnapX { get { return snapX; } set { snapX = value; } }
     public bool SnapY { get { return snapY; } set { snapY = value; } }
@@ -50,6 +57,37 @@ public class CustomJoystickBase : MonoBehaviour, IPointerDownHandler, IDragHandl
 
     private Vector2 input = Vector2.zero;
 
+    [SerializeField] public DefaultSettingsSO defaultSettings;
+
+    public void SetSettings()
+    {
+        if (this.left)
+        {
+            this.deadZone = PlayerPrefs.GetFloat("LeftStickDeadZone", defaultSettings.leftStickDeadZone);
+            if (PlayerPrefs.GetInt("LeftStickAction", defaultSettings.leftStickAction) == 1)
+            {
+                this.moveController = false;
+            }
+            else
+            {
+                this.moveController = true;
+            }
+        }
+        else
+        {
+            this.deadZone = PlayerPrefs.GetFloat("RightStickDeadZone", defaultSettings.rightStickDeadZone);
+            if (PlayerPrefs.GetInt("RightStickAction", defaultSettings.rightStickAction) == 1)
+            {
+                this.moveController = false;
+            }
+            else
+            {
+                this.moveController = true;
+            }
+        }
+        CreateVirtualAxes();
+    }
+
     void OnEnable()
     {
         CreateVirtualAxes();
@@ -65,6 +103,11 @@ public class CustomJoystickBase : MonoBehaviour, IPointerDownHandler, IDragHandl
                 CrossPlatformInputManager.RegisterVirtualAxis(m_HorizontalVirtualAxis);
                 m_VerticalVirtualAxis = new CrossPlatformInputManager.VirtualAxis(verticalAxisName);
                 CrossPlatformInputManager.RegisterVirtualAxis(m_VerticalVirtualAxis);
+            }
+            else
+            {
+                m_HorizontalVirtualAxis = CrossPlatformInputManager.VirtualAxisReference(horizontalAxisName);
+                m_VerticalVirtualAxis = CrossPlatformInputManager.VirtualAxisReference(verticalAxisName);
             }            
         }
         else
@@ -75,6 +118,11 @@ public class CustomJoystickBase : MonoBehaviour, IPointerDownHandler, IDragHandl
                 CrossPlatformInputManager.RegisterVirtualAxis(m_HorizontalVirtualAxis);
                 m_VerticalVirtualAxis = new CrossPlatformInputManager.VirtualAxis(verticalAxisNameLook);
                 CrossPlatformInputManager.RegisterVirtualAxis(m_VerticalVirtualAxis);
+            }
+            else
+            {
+                m_HorizontalVirtualAxis = CrossPlatformInputManager.VirtualAxisReference(horizontalAxisNameLook);
+                m_VerticalVirtualAxis = CrossPlatformInputManager.VirtualAxisReference(verticalAxisNameLook);
             }
         }
     }
