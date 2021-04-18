@@ -1,16 +1,12 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-
-    private bool loadScene = false;
-
-    [SerializeField]
-    private int scene;
-    [SerializeField]
-    private Text loadingText;
+    [SerializeField] private int scene;
+    [SerializeField] private Text loadingText;
 
 
     // Updates once per frame
@@ -31,7 +27,7 @@ public class SceneLoader : MonoBehaviour
     IEnumerator LoadNewScene()
     {
         // Start an asynchronous operation to load the scene that was passed to the LoadNewScene coroutine.
-        AsyncOperation async = Application.LoadLevelAsync(scene);
+        AsyncOperation async = SceneManager.LoadSceneAsync(scene);
 
         // While the asynchronous operation to load the new scene is not yet complete, continue waiting until it's done.
         while (!async.isDone)

@@ -37,6 +37,30 @@ public class SaveGameManagerSO : ScriptableObject
 
     public SaveFile GetCurrentFile()
     {
+        if (this.currentLoad == null)
+        {
+            return save0;
+        }
         return this.currentLoad;
+    }
+
+    public bool CurrentSaveIsNull()
+    {
+        return (this.currentLoad == null);
+    }
+
+    public SaveFile GetSave0()
+    {
+        return this.save0;
+    }
+
+    public SaveFile GetSave1()
+    {
+        return this.save1;
+    }
+
+    public SaveFile GetSave2()
+    {
+        return this.save2;
     }
 }

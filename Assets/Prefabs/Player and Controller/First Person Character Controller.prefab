@@ -179,6 +179,7 @@ MonoBehaviour:
   verticalAxisName: Vertical
   horizontalAxisNameLook: HorizontalLook
   verticalAxisNameLook: VerticalLook
+  sgm: {fileID: 11400000, guid: fa279de7fa3964d33861b82d4ec83f4a, type: 2}
   controllerPauseState: 0
   enableCameraMovement: 1
   mouseInputInversion: 0

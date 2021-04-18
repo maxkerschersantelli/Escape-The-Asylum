@@ -75,6 +75,8 @@ public class FirstPersonPlayerController : MonoBehaviour
     public string horizontalAxisNameLook = "HorizontalLook"; // The name given to the horizontal axis for the cross platform input
     public string verticalAxisNameLook = "VerticalLook"; // The name given to the vertical axis for the cross platform input
 
+    public SaveGameManagerSO sgm;
+
     #region Variables
 
     #region Input Settings
@@ -257,7 +259,7 @@ public class FirstPersonPlayerController : MonoBehaviour
     private void Awake()
     {
         #region Look Settings - Awake
-        originalRotation = transform.localRotation.eulerAngles;
+        
 
         #endregion 
 
@@ -284,6 +286,11 @@ public class FirstPersonPlayerController : MonoBehaviour
     private void Start()
     {
         #region Look Settings - Start
+        //originalRotation = transform.localRotation.eulerAngles;
+        PlayerSaveData data = sgm.GetCurrentFile().GetPlayerSaveData();
+        originalRotation = new Vector3(data.xLook, data.yLook, 0);
+        playerCamera.transform.localRotation = Quaternion.Euler(-originalRotation.x, 0, 0);
+        transform.localRotation = Quaternion.Euler(0, originalRotation.y, 0);
 
         if (autoCrosshair || drawStaminaMeter)
         {
@@ -1063,6 +1070,7 @@ public class FirstPersonPlayerController_Editor : Editor
         if (t.autoCrosshair) { EditorGUI.indentLevel++; EditorGUILayout.BeginHorizontal(); EditorGUILayout.PrefixLabel(new GUIContent("Crosshair", "Sprite to use as a crosshair.")); t.Crosshair = (Sprite)EditorGUILayout.ObjectField(t.Crosshair, typeof(Sprite), false); EditorGUILayout.EndHorizontal(); EditorGUI.indentLevel--; }
         GUI.enabled = true;
         EditorGUILayout.Space();
+        t.sgm = (SaveGameManagerSO)EditorGUILayout.ObjectField("Save Game Manager", t.sgm, typeof(SaveGameManagerSO));
         #endregion
 
         #region Movement Setup

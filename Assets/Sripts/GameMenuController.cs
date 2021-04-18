@@ -10,6 +10,11 @@ public class GameMenuController : MonoBehaviour
     [SerializeField] private GameObject audioMenu;
     [SerializeField] private GameObject controlMenu;
     [SerializeField] private GameObject disableUI;
+    [SerializeField] private GameObject loadingScreen;
+    [SerializeField] private GameObject winScreen;
+
+    [SerializeField] private GameEvent loadEvent;
+    [SerializeField] private SaveGameManagerSO sgm;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +23,8 @@ public class GameMenuController : MonoBehaviour
         menu.SetActive(false);
         audioMenu.SetActive(false);
         controlMenu.SetActive(false);
+        loadingScreen.SetActive(false);
+        winScreen.SetActive(false);
     }
 
     public void menuButtonClick()
@@ -48,7 +55,11 @@ public class GameMenuController : MonoBehaviour
 
     public void exitButtonClick()
     {
-        SceneManager.LoadScene("Main Menu");
+        FileSaveData file =  sgm.GetCurrentFile().GetFileSaveData();
+        file.time += Time.timeSinceLevelLoad;
+        sgm.GetCurrentFile().SaveFileSaveData(file);
+        loadEvent.Raise();
+        loadingScreen.SetActive(true);
     }
 
     public void graphicsSettingsButtonClick()
@@ -65,5 +76,25 @@ public class GameMenuController : MonoBehaviour
         menu.SetActive(false);
         audioMenu.SetActive(true);
         controlMenu.SetActive(false);
+    }
+
+    public void winGame()
+    {
+        IEnumerator coroutine = endGame();
+        StartCoroutine(coroutine);
+    }
+
+    
+
+    private IEnumerator endGame()
+    {
+        winScreen.SetActive(true);
+        FileSaveData file = sgm.GetCurrentFile().GetFileSaveData();
+        file.time += Time.timeSinceLevelLoad;
+        sgm.GetCurrentFile().SaveFileSaveData(file);
+        yield return new WaitForSeconds(2);
+        winScreen.SetActive(false);
+        loadEvent.Raise();
+        loadingScreen.SetActive(true);
     }
 }
