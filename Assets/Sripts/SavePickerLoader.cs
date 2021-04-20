@@ -9,6 +9,9 @@ public class SavePickerLoader : MonoBehaviour
     [SerializeField] private Text saveName;
     [SerializeField] private Text saveTime;
     [SerializeField] private int save;
+    [SerializeField] private Button button;
+
+    [SerializeField] private bool newSave;
 
     // Start is called before the first frame update
     void Start()
@@ -28,20 +31,24 @@ public class SavePickerLoader : MonoBehaviour
             currentSave = sgm.GetSave2();
         }
 
-        if (currentSave.GetFileSaveData().time == 0)
+        if (currentSave.IsBeaten())
+        {
+            saveName.text = "Save: " + "Finished";
+            if (!newSave)
+            {
+                button.interactable = false;
+            }
+        }
+
+        if (!newSave && currentSave.IsSaveBlank())
         {
             saveTime.text = "EMPTY";
+            button.interactable = false;
         }
         else
         {
             saveTime.text = currentSave.GetTime();
         }
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         
     }
 }

@@ -91,6 +91,7 @@ public class GameMenuController : MonoBehaviour
         winScreen.SetActive(true);
         FileSaveData file = sgm.GetCurrentFile().GetFileSaveData();
         file.time += Time.timeSinceLevelLoad;
+        file.finished = true;
         sgm.GetCurrentFile().SaveFileSaveData(file);
         yield return new WaitForSeconds(2);
         winScreen.SetActive(false);

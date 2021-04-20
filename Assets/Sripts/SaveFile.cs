@@ -16,7 +16,7 @@ public class SaveFile
 
         try
         {
-            QuickSaveReader.Create("Inputs")
+            QuickSaveReader.Create(fileName)
                        .Read<string>("File");
         }
         catch (Exception e)
@@ -25,10 +25,22 @@ public class SaveFile
         }
     }
 
+    public void LoadFromFile()
+    {
+        this.file = new FileSaveData();
+        QuickSaveReader.Create(fileName)
+                       .Read<string>("File", (r) => { this.file = JsonUtility.FromJson<FileSaveData>(r); });
+
+        this.player = new PlayerSaveData();
+        QuickSaveReader.Create(fileName)
+                       .Read<string>("Player", (r) => { this.player = JsonUtility.FromJson<PlayerSaveData>(r); });
+    }
+
     public void ResetFile()
     {
         this.file = new FileSaveData();
         this.file.time = 0;
+        this.file.finished = false;
         SaveFileSaveData(this.file);
 
         this.player = new PlayerSaveData();
@@ -112,11 +124,26 @@ public class SaveFile
         int hours = (int)(time % 24); // return the remainder of the hours divided by 60 as an int
         return string.Format("{0}:{1}:{2}", hours.ToString("00"), minutes.ToString("00"), seconds.ToString("00"));
     }
+
+    public bool IsSaveBlank()
+    {
+        if(this.file.time == 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public bool IsBeaten()
+    {
+        return this.file.finished;
+    }
 }
 
 public struct FileSaveData
 {
     public float time;
+    public bool finished;
 }
 
 public struct PlayerSaveData

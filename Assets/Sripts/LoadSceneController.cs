@@ -20,7 +20,7 @@ public class LoadSceneController : MonoBehaviour
     [SerializeField] GameEvent newSceneEvent;
 
     private int selectedIndex;
-    // Start is called before the first frame update
+
     void OnEnable()
     {
         UnSelectAllSaves();
@@ -29,9 +29,21 @@ public class LoadSceneController : MonoBehaviour
     private void UnSelectAllSaves()
     {
         selectedIndex = -1;
-        save0.interactable = true;
-        save1.interactable = true;
-        save2.interactable = true;
+        if (!sgm.IsSaveSlotEmpty(0) || sgm.IsSaveSlotBeaten(0))
+        {
+            save0.interactable = true;
+        }
+
+        if (!sgm.IsSaveSlotEmpty(1) || sgm.IsSaveSlotBeaten(1))
+        {
+            save1.interactable = true;
+        }
+
+        if (!sgm.IsSaveSlotEmpty(2) || sgm.IsSaveSlotBeaten(1))
+        {
+            save2.interactable = true;
+        }
+
         load.interactable = false;
     }
 

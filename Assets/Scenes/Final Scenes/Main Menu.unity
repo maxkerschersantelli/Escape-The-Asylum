@@ -614,7 +614,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &340468222
 RectTransform:
   m_ObjectHideFlags: 0
@@ -632,10 +632,10 @@ RectTransform:
   m_Father: {fileID: 904634127}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1218, y: -562.5}
-  m_SizeDelta: {x: 2436, y: 1125}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &340468223
 MonoBehaviour:
@@ -1684,7 +1684,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &951842370
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1763,7 +1763,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1062445614
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2062,6 +2062,8 @@ MonoBehaviour:
   newGameMenu: {fileID: 2121667783}
   loadGameMenu: {fileID: 1554775432}
   loadingScreen: {fileID: 1110444747}
+  continueButton: {fileID: 163737454}
+  sgm: {fileID: 11400000, guid: fa279de7fa3964d33861b82d4ec83f4a, type: 2}
 --- !u!114 &1398578393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2380,7 +2382,7 @@ PrefabInstance:
     - target: {fileID: 7121779835644166391, guid: 22c0f0ea6663d432b854e6d526440f46,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22c0f0ea6663d432b854e6d526440f46, type: 3}

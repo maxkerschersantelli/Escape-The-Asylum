@@ -35,6 +35,64 @@ public class SaveGameManagerSO : ScriptableObject
         }
     }
 
+    public void NewGame(int index)
+    {
+        switch (index)
+        {
+            case 0:
+                this.currentLoad = save0;
+                break;
+            case 1:
+                this.currentLoad = save1;
+                break;
+            case 2:
+                this.currentLoad = save2;
+                break;
+        }
+
+        this.currentLoad.ResetFile();
+    }
+
+    public bool IsSaveSlotEmpty(int index)
+    {
+        SaveFile saveSlot;
+
+        switch (index)
+        {
+            case 0:
+                saveSlot = save0;
+                break;
+            case 1:
+                saveSlot = save1;
+                break;
+            default:
+                saveSlot = save2;
+                break;
+        }
+
+        return saveSlot.IsSaveBlank();
+    }
+
+    public bool IsSaveSlotBeaten(int index)
+    {
+        SaveFile saveSlot;
+
+        switch (index)
+        {
+            case 0:
+                saveSlot = save0;
+                break;
+            case 1:
+                saveSlot = save1;
+                break;
+            default:
+                saveSlot = save2;
+                break;
+        }
+
+        return saveSlot.IsBeaten();
+    }
+
     public SaveFile GetCurrentFile()
     {
         if (this.currentLoad == null)

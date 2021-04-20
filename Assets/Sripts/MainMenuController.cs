@@ -22,6 +22,9 @@ public class MainMenuController : MonoBehaviour
 
     [SerializeField] private GameObject loadingScreen;
 
+    [SerializeField] private Button continueButton;
+    [SerializeField] private SaveGameManagerSO sgm;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +43,15 @@ public class MainMenuController : MonoBehaviour
         audioSettingsMenu.SetActive(false);
         newGameMenu.SetActive(false);
         loadGameMenu.SetActive(false);
+
+        if (sgm.CurrentSaveIsNull() || sgm.GetCurrentFile().IsBeaten())
+        {
+            continueButton.interactable = false;
+        }
+        else
+        {
+            continueButton.interactable = true;
+        }
     }
 
     public void ContinueButtonOnClick()
