@@ -84,8 +84,6 @@ public class GameMenuController : MonoBehaviour
         StartCoroutine(coroutine);
     }
 
-    
-
     private IEnumerator endGame()
     {
         winScreen.SetActive(true);

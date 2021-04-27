@@ -17,21 +17,23 @@ public class SaveFile
         try
         {
             QuickSaveReader.Create(fileName)
-                       .Read<string>("File");
+                       .Read<string>("File", (r) => { this.file = JsonUtility.FromJson<FileSaveData>(r); });
+            QuickSaveReader.Create(fileName)
+                       .Read<string>("Player", (r) => { this.player = JsonUtility.FromJson<PlayerSaveData>(r); });
         }
         catch (Exception e)
         {
+            Debug.Log("no save file found");
             ResetFile();
         }
+        Debug.Log("Save Found");
     }
 
     public void LoadFromFile()
     {
-        this.file = new FileSaveData();
         QuickSaveReader.Create(fileName)
                        .Read<string>("File", (r) => { this.file = JsonUtility.FromJson<FileSaveData>(r); });
 
-        this.player = new PlayerSaveData();
         QuickSaveReader.Create(fileName)
                        .Read<string>("Player", (r) => { this.player = JsonUtility.FromJson<PlayerSaveData>(r); });
     }
@@ -109,8 +111,10 @@ public class SaveFile
 
     public void SaveGame()
     {
+        Debug.Log("save game");
         this.file.time += Time.timeSinceLevelLoad;
         this.SaveFileSaveData(this.file);
+        this.SavePlayerSaveData(this.player);
 
     }
 

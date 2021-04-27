@@ -121,4 +121,10 @@ public class SaveGameManagerSO : ScriptableObject
     {
         return this.save2;
     }
+
+    public void SaveCurrentGame()
+    {
+        Debug.Log("Savecurrentgame");
+        this.currentLoad.SaveGame();
+    }
 }

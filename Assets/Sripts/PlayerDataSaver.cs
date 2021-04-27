@@ -32,4 +32,16 @@ public class PlayerDataSaver : MonoBehaviour
         player.zLook = 0;
         sgm.GetCurrentFile().SavePlayerSaveData(player);
     }
+
+    void OnApplicationQuit()
+    {
+        this.SavePlayerData();
+
+
+        FileSaveData file = sgm.GetCurrentFile().GetFileSaveData();
+        file.time += Time.timeSinceLevelLoad;
+        sgm.GetCurrentFile().SaveFileSaveData(file);
+        sgm.SaveCurrentGame();
+        Debug.Log("OnApplicationQuit");
+    }
 }
