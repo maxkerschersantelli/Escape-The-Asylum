@@ -24,6 +24,7 @@ public class MainMenuController : MonoBehaviour
 
     [SerializeField] private Button continueButton;
     [SerializeField] private SaveGameManagerSO sgm;
+    [SerializeField] private GameObject testMenuOnClick;
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +44,8 @@ public class MainMenuController : MonoBehaviour
         audioSettingsMenu.SetActive(false);
         newGameMenu.SetActive(false);
         loadGameMenu.SetActive(false);
+
+        testMenuOnClick.SetActive(false);
 
         if (sgm.CurrentSaveIsNull() || sgm.GetCurrentFile().IsBeaten())
         {
@@ -111,6 +114,21 @@ public class MainMenuController : MonoBehaviour
         rightMenuBackgroundImage.SetActive(false);
     }
 
+    public void TestOnClick()
+    {
+        controlsSettingsMenu.SetActive(false);
+        audioSettingsMenu.SetActive(false);
+
+        leftMenuMain.SetActive(true);
+        leftMenuSub.SetActive(false);
+
+        newGameMenu.SetActive(false);
+        loadGameMenu.SetActive(false);
+        title.SetActive(false);
+        rightMenuBackgroundImage.SetActive(false);
+        testMenuOnClick.SetActive(true);
+    }
+
     public void GraphicsSettingsOnClick()
     {
         controlsSettingsMenu.SetActive(true);
@@ -121,5 +139,18 @@ public class MainMenuController : MonoBehaviour
     {
         controlsSettingsMenu.SetActive(false);
         audioSettingsMenu.SetActive(true);
+    }
+
+    IEnumerator LoadNewScene()
+    {
+        // Start an asynchronous operation to load the scene that was passed to the LoadNewScene coroutine.
+        AsyncOperation async = SceneManager.LoadSceneAsync(2);
+
+        // While the asynchronous operation to load the new scene is not yet complete, continue waiting until it's done.
+        while (!async.isDone)
+        {
+            yield return null;
+        }
+
     }
 }

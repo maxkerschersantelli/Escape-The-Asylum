@@ -184,7 +184,7 @@ MonoBehaviour:
   enableCameraMovement: 1
   mouseInputInversion: 0
   cameraInputMethod: 0
-  defaultSettings: {fileID: 0}
+  defaultSettings: {fileID: 11400000, guid: 9e55839e59a224ce482fd2594486fbd9, type: 2}
   verticalRotationRange: 170
   mouseSensitivity: 2
   fOVToMouseSensitivity: 1

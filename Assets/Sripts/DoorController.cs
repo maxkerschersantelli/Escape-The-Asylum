@@ -17,19 +17,20 @@ public class DoorController : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log(distanceChecker.gameObject);
         if (!isLocked && !EventSystem.current.IsPointerOverGameObject() && distanceChecker.IsInRange())
         {
-            if (!isLocked)
-            {
-                _doorAnim.SetBool("isOpening", !_doorAnim.GetBool("isOpening"));
-            }
+            _doorAnim.SetBool("isOpening", !_doorAnim.GetBool("isOpening"));
         }
     }
 
     public bool IsLocked()
     {
         return isLocked;
+    }
+
+    public void Unlock()
+    {
+        this.isLocked = false;
     }
 
     public bool IsOpen()
@@ -52,5 +53,4 @@ public class DoorController : MonoBehaviour
             _doorAnim.SetBool("isOpening", false);
         }
     }
-
 }

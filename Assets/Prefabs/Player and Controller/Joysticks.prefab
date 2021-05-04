@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4258709207552678046}
   - component: {fileID: 4258709207552678043}
   - component: {fileID: 4258709207552678044}
-  - component: {fileID: 7503815484038461596}
   - component: {fileID: 5803518767952474590}
   - component: {fileID: 1025076825183764585}
   m_Layer: 5
@@ -79,19 +78,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7503815484038461596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4258709207552678047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5bda3cc953a447769a5ffd35debd6b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  left: 1
 --- !u!114 &5803518767952474590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -486,7 +472,6 @@ GameObject:
   - component: {fileID: 9151393329332497261}
   - component: {fileID: 9151393329332497262}
   - component: {fileID: 9151393329332497263}
-  - component: {fileID: 1621149707256666008}
   - component: {fileID: 1653227857171815526}
   - component: {fileID: 8244920651587052026}
   m_Layer: 5
@@ -554,19 +539,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1621149707256666008
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9151393329332497258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5bda3cc953a447769a5ffd35debd6b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  left: 0
 --- !u!114 &1653227857171815526
 MonoBehaviour:
   m_ObjectHideFlags: 0
